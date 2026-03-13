@@ -15,7 +15,6 @@
   }
   h1 { font-size: 20px; font-weight: 600; color: #B36F4D; margin-bottom: 4px; }
   .subtitle { font-size: 13px; color: #666; margin-bottom: 24px; }
-
   .card {
     background: #1C1D32;
     border: 1px solid #2a2a4a;
@@ -31,7 +30,6 @@
     color: #666;
     margin-bottom: 12px;
   }
-
   button {
     display: block;
     width: 100%;
@@ -45,11 +43,10 @@
   }
   button:active { transform: scale(0.98); }
   button:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
-
-  .btn-connect  { background: #B36F4D; color: #fff; }
-  .btn-start    { background: #1a6b3a; color: #fff; }
-  .btn-abort    { background: #6b1a1a; color: #fff; margin-top: 10px; }
-  .btn-file     {
+  .btn-connect { background: #B36F4D; color: #fff; }
+  .btn-start   { background: #1a6b3a; color: #fff; }
+  .btn-abort   { background: #6b1a1a; color: #fff; margin-top: 10px; }
+  .btn-file {
     background: #232440;
     color: #aaa;
     border: 1.5px dashed #3a3a5a;
@@ -60,31 +57,15 @@
   }
   .btn-file.has-file { border-color: #B36F4D; color: #e0e0e0; }
   input[type=file] { display: none; }
-
-  .status-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-  .dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    background: #333;
-  }
-  .dot.connected   { background: #2ecc71; box-shadow: 0 0 6px #2ecc71; }
-  .dot.connecting  { background: #f39c12; }
-  .dot.error       { background: #e74c3c; }
-  .dot.transferring{ background: #3498db; }
-
+  .status-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; background: #333; }
+  .dot.connected    { background: #2ecc71; box-shadow: 0 0 6px #2ecc71; }
+  .dot.connecting   { background: #f39c12; }
+  .dot.error        { background: #e74c3c; }
+  .dot.transferring { background: #3498db; }
   .status-text { font-size: 14px; color: #bbb; flex: 1; }
   .device-name { font-size: 13px; color: #B36F4D; font-weight: 600; }
-
-  .progress-wrap {
-    margin-top: 14px;
-    display: none;
-  }
+  .progress-wrap { margin-top: 14px; display: none; }
   .progress-wrap.visible { display: block; }
   .progress-bar-bg {
     background: #0a0a18;
@@ -101,13 +82,7 @@
     width: 0%;
     transition: width 0.3s ease;
   }
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #666;
-  }
-
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #666; }
   .log-box {
     background: #0a0a18;
     border: 1px solid #1a1a30;
@@ -119,22 +94,15 @@
     font-size: 12px;
     line-height: 1.6;
   }
-  .log-line { color: #888; }
-  .log-line.ok  { color: #2ecc71; }
-  .log-line.err { color: #e74c3c; }
-  .log-line.info{ color: #3498db; }
-  .log-line.warn{ color: #f39c12; }
-
-  .chunk-size-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
+  .log-line      { color: #888; }
+  .log-line.ok   { color: #2ecc71; }
+  .log-line.err  { color: #e74c3c; }
+  .log-line.info { color: #3498db; }
+  .log-line.warn { color: #f39c12; }
+  .chunk-size-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
   .chunk-size-row label { font-size: 13px; color: #888; }
   .chunk-size-row input[type=range] { flex: 1; accent-color: #B36F4D; }
   .chunk-size-row span { font-size: 13px; color: #B36F4D; min-width: 36px; text-align: right; }
-
   .not-supported {
     background: #3a1010;
     border: 1px solid #6b2020;
@@ -158,45 +126,34 @@
   On iOS, Web Bluetooth is not supported by any browser.
 </div>
 
-<!-- Step 1 – Connect -->
-<div class="card" id="cardConnect">
+<div class="card">
   <div class="card-title">Step 1 — Connect</div>
   <div class="status-row">
     <div class="dot" id="connDot"></div>
     <span class="status-text" id="connStatus">Not connected</span>
   </div>
   <div class="device-name" id="deviceName"></div>
-  <button class="btn-connect" id="btnConnect" onclick="connectBLE()">
-    Scan &amp; Connect
-  </button>
+  <button class="btn-connect" id="btnConnect" onclick="connectBLE()">Scan &amp; Connect</button>
 </div>
 
-<!-- Step 2 – Select firmware -->
-<div class="card" id="cardFile">
+<div class="card">
   <div class="card-title">Step 2 — Select firmware .bin</div>
-  <label id="fileLabel">
-    <input type="file" id="fileInput" accept=".bin" onchange="fileSelected()">
-    <div class="btn-file" id="btnFile" onclick="document.getElementById('fileInput').click()">
-      Tap to choose .bin file
-    </div>
-  </label>
+  <input type="file" id="fileInput" accept=".bin" onchange="fileSelected()">
+  <div class="btn-file" id="btnFile" onclick="document.getElementById('fileInput').click()">
+    Tap to choose .bin file
+  </div>
   <div class="chunk-size-row">
     <label>Chunk size</label>
-    <input type="range" id="chunkSlider" min="50" max="500" step="10" value="400"
+    <input type="range" id="chunkSlider" min="50" max="500" step="10" value="200"
            oninput="document.getElementById('chunkVal').textContent=this.value+'B'">
-    <span id="chunkVal">400B</span>
+    <span id="chunkVal">200B</span>
   </div>
 </div>
 
-<!-- Step 3 – Update -->
-<div class="card" id="cardUpdate">
+<div class="card">
   <div class="card-title">Step 3 — Flash firmware</div>
-  <button class="btn-start" id="btnStart" onclick="startOTA()" disabled>
-    Start OTA Update
-  </button>
-  <button class="btn-abort" id="btnAbort" onclick="abortOTA()" style="display:none">
-    Abort
-  </button>
+  <button class="btn-start" id="btnStart" onclick="startOTA()" disabled>Start OTA Update</button>
+  <button class="btn-abort" id="btnAbort" onclick="abortOTA()" style="display:none">Abort</button>
   <div class="progress-wrap" id="progressWrap">
     <div class="progress-bar-bg">
       <div class="progress-bar-fill" id="progressFill"></div>
@@ -208,16 +165,15 @@
   </div>
 </div>
 
-<!-- Log -->
 <div class="card">
   <div class="card-title">Log</div>
   <div class="log-box" id="logBox"></div>
 </div>
 
 <script>
-const NUS_SERVICE  = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
-const NUS_RX_CHAR  = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
-const NUS_TX_CHAR  = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
+const NUS_SERVICE = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
+const NUS_RX_CHAR = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
+const NUS_TX_CHAR = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
 
 let bleDevice     = null;
 let rxChar        = null;
@@ -227,36 +183,32 @@ let otaRunning    = false;
 let notifyResolve = null;
 let notifyFilter  = null;
 
-// ── Check Web Bluetooth support ───────────────────────────
 if (!navigator.bluetooth) {
   document.getElementById('notSupported').style.display = 'block';
   document.getElementById('btnConnect').disabled = true;
 }
 
 function log(msg, cls='') {
-  const box = document.getElementById('logBox');
+  const box  = document.getElementById('logBox');
   const line = document.createElement('div');
   line.className = 'log-line ' + cls;
-  const ts = new Date().toLocaleTimeString('en-GB', {hour12:false});
+  const ts = new Date().toLocaleTimeString('en-GB', {hour12: false});
   line.textContent = '[' + ts + '] ' + msg;
   box.appendChild(line);
   box.scrollTop = box.scrollHeight;
 }
 
 function setConnState(state, name) {
-  const dot    = document.getElementById('connDot');
-  const status = document.getElementById('connStatus');
-  const dname  = document.getElementById('deviceName');
-  dot.className = 'dot ' + state;
+  document.getElementById('connDot').className = 'dot ' + state;
   const labels = {
-    '':            'Not connected',
-    'connecting':  'Connecting...',
-    'connected':   'Connected',
-    'error':       'Connection error',
-    'transferring':'Transferring...'
+    '':             'Not connected',
+    'connecting':   'Connecting...',
+    'connected':    'Connected',
+    'error':        'Connection error',
+    'transferring': 'Transferring...'
   };
-  status.textContent = labels[state] || state;
-  dname.textContent  = name || '';
+  document.getElementById('connStatus').textContent = labels[state] || state;
+  document.getElementById('deviceName').textContent = name || '';
 }
 
 function updateStartBtn() {
@@ -264,7 +216,6 @@ function updateStartBtn() {
   document.getElementById('btnStart').disabled = !ok || otaRunning;
 }
 
-// ── BLE connection ─────────────────────────────────────────
 async function connectBLE() {
   document.getElementById('btnConnect').disabled = true;
   setConnState('connecting', '');
@@ -304,32 +255,31 @@ function onDisconnected() {
   updateStartBtn();
 }
 
-// ── Notification handler ───────────────────────────────────
 function onNotify(event) {
-  const val  = event.target.value;
-  const text = new TextDecoder().decode(val).trim();
+  const text = new TextDecoder().decode(event.target.value).trim();
   log('ESP32: ' + text);
   if (notifyResolve && notifyFilter && text.startsWith(notifyFilter)) {
     const cb = notifyResolve;
-    notifyResolve = null; notifyFilter = null;
+    notifyResolve = null;
+    notifyFilter  = null;
     cb(text);
   }
 }
 
-function waitForNotify(prefix, timeoutMs=12000) {
+function waitForNotify(prefix, timeoutMs) {
   return new Promise((resolve, reject) => {
     notifyFilter  = prefix;
     notifyResolve = resolve;
     setTimeout(() => {
       if (notifyResolve) {
-        notifyResolve = null; notifyFilter = null;
+        notifyResolve = null;
+        notifyFilter  = null;
         reject(new Error('Timeout waiting for: ' + prefix));
       }
     }, timeoutMs);
   });
 }
 
-// ── File selection ─────────────────────────────────────────
 function fileSelected() {
   const file = document.getElementById('fileInput').files[0];
   if (!file) return;
@@ -345,7 +295,6 @@ function fileSelected() {
   reader.readAsArrayBuffer(file);
 }
 
-// ── OTA transfer ───────────────────────────────────────────
 async function startOTA() {
   if (!rxChar || !firmwareBytes || otaRunning) return;
   otaRunning = true;
@@ -356,43 +305,41 @@ async function startOTA() {
 
   const total     = firmwareBytes.length;
   const chunkSize = parseInt(document.getElementById('chunkSlider').value);
-  let sent        = 0;
+  let   sent      = 0;
 
   const setProgress = (n) => {
     const pct = Math.round(n * 100 / total);
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressPct').textContent  = pct + '%';
-    document.getElementById('progressBytes').textContent =
+    document.getElementById('progressFill').style.width   = pct + '%';
+    document.getElementById('progressPct').textContent    = pct + '%';
+    document.getElementById('progressBytes').textContent  =
       n.toLocaleString() + ' / ' + total.toLocaleString() + ' bytes';
   };
   setProgress(0);
 
   try {
-    // Handshake
     log('Sending OTA_START ' + total + '...', 'info');
     const startCmd = new TextEncoder().encode('OTA_START ' + total + '\n');
-    
 
-    const ready = await waitForNotify('OTA_READY', 10000);
+    // Set up listener BEFORE sending so we cannot miss the response
+    const readyPromise = waitForNotify('OTA_READY', 30000);
     await rxChar.writeValueWithResponse(startCmd);
+
+    log('Waiting for OTA_READY...', 'info');
     const ready = await readyPromise;
-   
     log('Got: ' + ready, 'ok');
     log('Sending ' + total + ' bytes in ' + chunkSize + 'B chunks...', 'info');
 
     const startTime = Date.now();
 
-    // Send chunks
     while (sent < total && otaRunning) {
       const end   = Math.min(sent + chunkSize, total);
       const chunk = firmwareBytes.slice(sent, end);
       await rxChar.writeValueWithResponse(chunk);
       sent = end;
       setProgress(sent);
-
-      // Yield to UI every 4 KB to keep page responsive
+      // Yield to UI periodically
       if (sent % 4096 < chunkSize) {
-        await new Promise(r => setTimeout(r, 1));
+        await new Promise(r => setTimeout(r, 5));
       }
     }
 
@@ -402,15 +349,13 @@ async function startOTA() {
     }
 
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-    log('All chunks sent (' + elapsed + 's). Waiting for result...', 'info');
+    log('All chunks sent (' + elapsed + 's) — waiting for result...', 'info');
 
-    // Wait for final result
     const result = await waitForNotify('OTA_', 20000);
     if (result.includes('OTA_OK')) {
-      log('SUCCESS — ESP32 is rebooting!', 'ok');
-      setConnState('connected', bleDevice.name);
       const rate = (total / 1024 / parseFloat(elapsed)).toFixed(1);
-      log('Average rate: ' + rate + ' KB/s', 'info');
+      log('SUCCESS — ESP32 rebooting!  (' + rate + ' KB/s)', 'ok');
+      setConnState('connected', bleDevice.name);
     } else {
       throw new Error('Device reported: ' + result);
     }
@@ -432,8 +377,7 @@ async function abortOTA() {
   log('Aborting...', 'warn');
   try {
     if (rxChar) {
-      const abort = new TextEncoder().encode('OTA_ABORT\n');
-      await rxChar.writeValueWithResponse(abort);
+      await rxChar.writeValueWithResponse(new TextEncoder().encode('OTA_ABORT\n'));
     }
   } catch(e) { /* ignore */ }
 }
