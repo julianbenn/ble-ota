@@ -371,9 +371,12 @@ async function startOTA() {
     // Handshake
     log('Sending OTA_START ' + total + '...', 'info');
     const startCmd = new TextEncoder().encode('OTA_START ' + total + '\n');
-    await rxChar.writeValueWithResponse(startCmd);
+    
 
     const ready = await waitForNotify('OTA_READY', 10000);
+    await rxChar.writeValueWithResponse(startCmd);
+    const ready = await readyPromise;
+   
     log('Got: ' + ready, 'ok');
     log('Sending ' + total + ' bytes in ' + chunkSize + 'B chunks...', 'info');
 
