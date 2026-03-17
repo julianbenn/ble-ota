@@ -1,6 +1,10 @@
 {
-  "version": "043",
-  "url": "https://ble-ota.com/EC17_0014_043.X.production.hex",
-  "notes": "first go at OTA ",
-  "auto_install": false
+  "version": "1.0.1",
+  "url": "https://github.com/julianbenn/ble-ota/releases/download/v1.0.1/firmware_1.0.1.hex",
+  "notes": "EC17 Lift Controller firmware update 1.0.1",
+  "auto_install": false,
+  "md5": "1ed2115b5331d83ecbd2a711e8ede846",
+  "size": 158715,
+  "date": "2026-03-17 16:17",
+  "product": "EC17 Lift Controller"
 }
