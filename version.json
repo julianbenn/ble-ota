@@ -1,0 +1,6 @@
+{
+  "version": "043",
+  "url": "https://ble-ota.com/EC17_0014_043.X.production.hex",
+  "notes": "first go at OTA ",
+  "auto_install": false
+}
